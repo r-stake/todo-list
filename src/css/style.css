@@ -35,3 +35,30 @@ body {
   display: grid;
   grid-template-columns: minmax(300px, 1fr) 4fr;
 }
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.project {
+  border: 1px solid red;
+  padding: 0 20px;
+}
+
+.project h1.project-label {
+  text-align: center;
+}
+
+.project .section {
+  /* padding: 0 20px; */
+}
+
+.project .section .task {
+  padding-left: 20px;
+}
+
+.project h2.section-label {
+  font-size: 1.125rem;
+}
