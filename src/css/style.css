@@ -1,0 +1,37 @@
+:root {
+  --main: #bfd6eb;
+  --secondary: #ebd4bf;
+  --text: #990a51;
+}
+
+body {
+  background-color: var(--main);
+}
+
+.todo-list-app {
+  min-height: 100vh;
+  padding: 50px 20px;
+}
+
+.navigation .nav-item {
+  width: 100%;
+  padding: 5px;
+  background-color: var(--main);
+  border: none;
+  text-align: left;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.navigation .nav-item:hover {
+  background-color: var(--secondary);
+}
+
+.navigation .nav-item:active {
+  transform: scale(98%);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) 4fr;
+}
