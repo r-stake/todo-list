@@ -1,0 +1,92 @@
+import {
+  createProject,
+  deleteProject as deleteProjectBase,
+  getProject as getProjectBase,
+  getAllProjects as getAllProjectsBase,
+  getProjectTodos as getProjectTodosBase,
+  getProjectTitle as getProjectTitleBase,
+  setProjectTitle as setProjectTitleBase,
+  getProjectDescription as getProjectDescriptionBase,
+  setProjectDescription as setProjectDescriptionBase,
+  getProjectDueDate as getProjectDueDateBase,
+  setProjectDueDate as setProjectDueDateBase,
+  getProjectPriority as getProjectPriorityBase,
+  setProjectPriority as setProjectPriorityBase,
+} from "./project";
+
+export const container = () => {
+  const projects = [];
+
+  const addProject = (projectId, title, description, date, priority) => {
+    const project = createProject(
+      projectId,
+      title,
+      description,
+      date,
+      priority
+    );
+    projects.push(project);
+
+    return project;
+  };
+
+  const deleteProject = (projectId) => deleteProjectBase(projects, projectId);
+
+  const getProject = (projectId) => {
+    return getProjectBase(projects, projectId);
+  };
+
+  const getAllProjects = getAllProjectsBase(projects);
+
+  const getProjectTodos = (projectId) => {
+    return getProjectTodosBase(projects, projectId);
+  };
+
+  const getProjectTitle = (projectId) => {
+    return getProjectTitleBase(projects, projectId);
+  };
+
+  const setProjectTitle = (projectId, newTitle) => {
+    return setProjectTitleBase(projects, projectId, newTitle);
+  };
+
+  const getProjectDescription = (projectId) => {
+    return getProjectDescriptionBase(projects, projectId);
+  };
+
+  const setProjectDescription = (projectId, newDescription) => {
+    return setProjectDescriptionBase(projects, projectId, newDescription);
+  };
+
+  const getProjectPriority = (projectId) => {
+    return getProjectPriorityBase(projects, projectId);
+  };
+
+  const setProjectPriority = (projectId, newPriority) => {
+    return setProjectPriorityBase(projects, projectId, newPriority);
+  };
+
+  const getProjectDueDate = (projectId) => {
+    return getProjectDueDateBase(projects, projectId);
+  };
+
+  const setProjectDueDate = (projectId, newDate) => {
+    return setProjectDueDateBase(projects, projectId, newDate);
+  };
+
+  return {
+    addProject,
+    deleteProject,
+    getProject,
+    getAllProjects,
+    getProjectTodos,
+    getProjectTitle,
+    setProjectTitle,
+    getProjectDescription,
+    setProjectDescription,
+    getProjectDueDate,
+    setProjectDueDate,
+    getProjectPriority,
+    setProjectPriority,
+  };
+};
