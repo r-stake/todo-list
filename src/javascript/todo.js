@@ -1,5 +1,6 @@
-export const createTodo = function (label, section = "default") {
+export const createTodo = function (todoId, label, section = "default") {
   const todo = {
+    todoId,
     section,
     label,
     completed: false,

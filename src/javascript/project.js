@@ -1,3 +1,5 @@
+import { createTodo } from "./todo";
+
 export const createProject = function (
   projectId,
   title,
@@ -8,21 +10,6 @@ export const createProject = function (
   const todoList = [];
 
   let dueDate = new Date(date);
-
-  // const getTodoList = () => todoList;
-
-  // const addTodo = function (label, section = "default") {
-  //   let sectionObj = todoList.find((item) => item.section === section);
-  //   if (!sectionObj) {
-  //     sectionObj = { section, list: [] };
-  //     todoList.push(sectionObj);
-  //   }
-
-  //   const todo = createTodo(label, section);
-  //   sectionObj.list.push(todo);
-
-  //   return todo;
-  // };
 
   // const getTodosBySection = (section) => {
   //   const sectionObj = todoList.find((item) => item.section === section);
@@ -163,6 +150,32 @@ export const setProjectPriority = (projectsList, projectId, newPriority) => {
   return (findProject(projectsList, projectId).priority = newPriority);
 };
 
+//---------------------- Todo methods -------------------
+
+export const addTodo = function (
+  projectsList,
+  projectId,
+  todoId,
+  label,
+  section
+) {
+  const project = findProject(projectsList, projectId);
+  const todoList = project.todoList;
+  // Search for todo section
+  let sectionObj = todoList.find((todo) => todo.section === section);
+  // Create a new section if one does not exist
+  if (!sectionObj) {
+    sectionObj = { section, list: [] };
+    todoList.push(sectionObj);
+  }
+
+  // Create a new todo and add it to the section
+  const todo = createTodo(todoId, label, section);
+  sectionObj.list.push(todo);
+
+  return todo;
+};
+
 // ---------------- Helper functions -----------------
 
 export const findProject = (projectsList, projectId) => {
@@ -183,3 +196,11 @@ export const findProject = (projectsList, projectId) => {
 
   return project;
 };
+
+// export const findTodoBySection = (projectsList, projectId, section) => {
+//   const project = findProject(projectsList, projectId);
+
+//   const todo = project.todoList.find((todo) => todo.section === section);
+
+//   return todo;
+// };

@@ -12,10 +12,13 @@ import {
   setProjectDueDate as setProjectDueDateBase,
   getProjectPriority as getProjectPriorityBase,
   setProjectPriority as setProjectPriorityBase,
+  addTodo as addTodoBase,
 } from "./project";
 
 export const container = () => {
   const projects = [];
+
+  //------------------- Project methods -------------------
 
   const addProject = (projectId, title, description, date, priority) => {
     const project = createProject(
@@ -74,19 +77,28 @@ export const container = () => {
     return setProjectDueDateBase(projects, projectId, newDate);
   };
 
+  //------------------- Todo methods -------------------
+
+  const addTodo = (projectId, todoId, label, section = "default") => {
+    return addTodoBase(projects, projectId, todoId, label, section);
+  };
+
   return {
-    addProject,
-    deleteProject,
-    getProject,
-    getAllProjects,
-    getProjectTodos,
-    getProjectTitle,
-    setProjectTitle,
-    getProjectDescription,
-    setProjectDescription,
-    getProjectDueDate,
-    setProjectDueDate,
-    getProjectPriority,
-    setProjectPriority,
+    project: {
+      addProject,
+      deleteProject,
+      getProject,
+      getAllProjects,
+      getProjectTodos,
+      getProjectTitle,
+      setProjectTitle,
+      getProjectDescription,
+      setProjectDescription,
+      getProjectDueDate,
+      setProjectDueDate,
+      getProjectPriority,
+      setProjectPriority,
+    },
+    todo: { addTodo },
   };
 };

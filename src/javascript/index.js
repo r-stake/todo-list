@@ -6,7 +6,7 @@ console.log("Working as intended");
 const myProjects = container();
 console.log(myProjects);
 console.log(
-  myProjects.addProject(
+  myProjects.project.addProject(
     "prj1",
     "The Lord of the Rings: The Fellowship of the Ring",
     "Read the book",
@@ -14,35 +14,90 @@ console.log(
     3
   )
 );
-myProjects.addProject(
+myProjects.project.addProject(
   "prj2",
   "The Count of Monte Cristo",
   "Read the book",
   "2024-12-31",
   1
 );
-console.log("My projects: ", myProjects.getAllProjects());
-console.log("Project 1 todo list: ", myProjects.getProjectTodos("prj1"));
-console.log("Project 1 : ", myProjects.getProject("prj1"));
-console.log("Removed project: ", myProjects.deleteProject("prj2"));
-console.log("My projects after removal: ", myProjects.getAllProjects());
-console.log("Project title: ", myProjects.getProjectTitle("prj1"));
+console.log("My projects: ", myProjects.project.getAllProjects());
+console.log(
+  "Project 1 todo list: ",
+  myProjects.project.getProjectTodos("prj1")
+);
+console.log("Project 1 : ", myProjects.project.getProject("prj1"));
+console.log("Removed project: ", myProjects.project.deleteProject("prj2"));
+console.log("My projects after removal: ", myProjects.project.getAllProjects());
+console.log("Project title: ", myProjects.project.getProjectTitle("prj1"));
 console.log(
   "New project title: ",
-  myProjects.setProjectTitle("prj1", "The Lord of the Rings")
+  myProjects.project.setProjectTitle("prj1", "The Lord of the Rings")
 );
-console.log("Project description: ", myProjects.getProjectDescription("prj1"));
+console.log(
+  "Project description: ",
+  myProjects.project.getProjectDescription("prj1")
+);
 console.log(
   "New project description: ",
-  myProjects.setProjectDescription("prj1", "Finish the rest of the trilogy")
+  myProjects.project.setProjectDescription(
+    "prj1",
+    "Finish the rest of the trilogy"
+  )
 );
-console.log("Project due date: ", myProjects.getProjectDueDate("prj1"));
+console.log("Project due date: ", myProjects.project.getProjectDueDate("prj1"));
 console.log(
   "New project due date: ",
-  myProjects.setProjectDueDate("prj1", "2025-12-31")
+  myProjects.project.setProjectDueDate("prj1", "2025-12-31")
 );
-console.log("Project priority: ", myProjects.getProjectPriority("prj1"));
-console.log("New project priority: ", myProjects.setProjectPriority("prj1", 2));
+console.log(
+  "Project priority: ",
+  myProjects.project.getProjectPriority("prj1")
+);
+console.log(
+  "New project priority: ",
+  myProjects.project.setProjectPriority("prj1", 2)
+);
+
+console.log(
+  "Adding new todo to prj1: ",
+  myProjects.todo.addTodo("prj1", "prj1-todo1", "Buy 'Two Towers'")
+);
+console.log(
+  "Adding new todo to prj1: ",
+  myProjects.todo.addTodo("prj1", "prj1-todo2", "Buy 'Return of the King'")
+);
+console.log(
+  "Adding new todo to prj1: ",
+  myProjects.todo.addTodo("prj1", "prj1-todo3", "Read 'Two Towers'")
+);
+console.log(
+  "Adding new todo to prj1: ",
+  myProjects.todo.addTodo("prj1", "prj1-todo4", "Read 'Return of the king'")
+);
+console.log(
+  "Adding new todo to prj1: ",
+  myProjects.todo.addTodo(
+    "prj1",
+    "prj1-todo-extra1",
+    "Discuss the trilogy with others",
+    "extra"
+  )
+);
+console.log(
+  "Adding new todo to prj1: ",
+  myProjects.todo.addTodo(
+    "prj1",
+    "prj1-todo-extra2",
+    "Watch the extended movie versions and compare",
+    "extra"
+  )
+);
+console.log(
+  "Return the list of todos from prj1: ",
+  myProjects.project.getProjectTodos("prj1")
+);
+console.log("Return prj1 data: ", myProjects.project.getProject("prj1"));
 
 // projects[0].addTodo("Ignore work");
 // projects[0].addTodo("Play video games");
