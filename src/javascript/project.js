@@ -74,8 +74,6 @@ export const createProject = function (
     description,
     dueDate,
     priority,
-    // getTodoList,
-    // addTodo,
     // getTodosBySection,
     // toggleTodoStatus,
     // isCompletedTodo,
@@ -152,25 +150,25 @@ export const setProjectPriority = (projectsList, projectId, newPriority) => {
 
 //---------------------- Todo methods -------------------
 
-export const addTodo = function (
+export const addTodo = (
   projectsList,
   projectId,
   todoId,
   label,
-  section
-) {
+  sectionName
+) => {
   const project = findProject(projectsList, projectId);
   const todoList = project.todoList;
   // Search for todo section
-  let sectionObj = todoList.find((todo) => todo.section === section);
+  let sectionObj = todoList.find((todo) => todo.sectionName === sectionName);
   // Create a new section if one does not exist
   if (!sectionObj) {
-    sectionObj = { section, list: [] };
+    sectionObj = { sectionName, list: [] };
     todoList.push(sectionObj);
   }
 
   // Create a new todo and add it to the section
-  const todo = createTodo(todoId, label, section);
+  const todo = createTodo(todoId, label, sectionName);
   sectionObj.list.push(todo);
 
   return todo;

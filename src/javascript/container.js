@@ -15,6 +15,8 @@ import {
   addTodo as addTodoBase,
 } from "./project";
 
+import { getTodoLabel as getTodoLabelBase } from "./todo";
+
 export const container = () => {
   const projects = [];
 
@@ -83,6 +85,10 @@ export const container = () => {
     return addTodoBase(projects, projectId, todoId, label, section);
   };
 
+  const getTodoLabel = (projectId, todoId, sectionName = "default") => {
+    return getTodoLabelBase(projects, projectId, todoId, sectionName);
+  };
+
   return {
     project: {
       addProject,
@@ -99,6 +105,6 @@ export const container = () => {
       getProjectPriority,
       setProjectPriority,
     },
-    todo: { addTodo },
+    todo: { addTodo, getTodoLabel },
   };
 };

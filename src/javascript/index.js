@@ -98,6 +98,10 @@ console.log(
   myProjects.project.getProjectTodos("prj1")
 );
 console.log("Return prj1 data: ", myProjects.project.getProject("prj1"));
+console.log(
+  "Return the label of todo found in project with projectId = 'prj1' and section = 'default'",
+  myProjects.todo.getTodoLabel("prj1", "prj1-todo2")
+);
 
 // projects[0].addTodo("Ignore work");
 // projects[0].addTodo("Play video games");
