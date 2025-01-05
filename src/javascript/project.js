@@ -1,5 +1,3 @@
-import { createTodo } from "./todo";
-
 export const createProject = function (
   projectId,
   title,
@@ -10,14 +8,6 @@ export const createProject = function (
   const todoList = [];
 
   let dueDate = new Date(date);
-
-  // const getTodosBySection = (section) => {
-  //   const sectionObj = todoList.find((item) => item.section === section);
-  //   if (sectionObj) {
-  //     return sectionObj.list;
-  //   }
-  //   return [];
-  // };
 
   // const toggleTodoStatus = (section, label) => {
   //   const sectionObj = todoList.find((item) => item.section === section);
@@ -33,40 +23,6 @@ export const createProject = function (
   //   return false;
   // };
 
-  // const isCompletedTodo = (section, label) => {
-  //   const sectionObj = todoList.find((item) => item.section === section);
-  //   if (!sectionObj) {
-  //     return false;
-  //   }
-
-  //   const todo = sectionObj.list.find((todo) => todo.label === label);
-  //   if (!todo) {
-  //     return false;
-  //   }
-
-  //   return todo.completed;
-  // };
-
-  // const getTitle = () => title;
-  // const setTitle = (newTitle) => {
-  //   title = newTitle;
-  // };
-
-  // const getDescription = () => description;
-  // const setDescription = (newDescription) => {
-  //   description = newDescription;
-  // };
-
-  // const getDueDate = () => dueDate;
-  // const setDueDate = (newDueDate) => {
-  //   dueDate = new Date(newDueDate);
-  // };
-
-  // const getPriority = () => priority;
-  // const setPriority = (newPriority) => {
-  //   priority = newPriority;
-  // };
-
   return {
     todoList,
     projectId,
@@ -76,15 +32,6 @@ export const createProject = function (
     priority,
     // getTodosBySection,
     // toggleTodoStatus,
-    // isCompletedTodo,
-    // getTitle,
-    // setTitle,
-    // getDescription,
-    // setDescription,
-    // getDueDate,
-    // setDueDate,
-    // getPriority,
-    // setPriority,
   };
 };
 
@@ -148,35 +95,17 @@ export const setProjectPriority = (projectsList, projectId, newPriority) => {
   return (findProject(projectsList, projectId).priority = newPriority);
 };
 
-//---------------------- Todo methods -------------------
-
-export const addTodo = (
-  projectsList,
-  projectId,
-  todoId,
-  label,
-  sectionName
-) => {
-  const project = findProject(projectsList, projectId);
-  const todoList = project.todoList;
-  // Search for todo section
-  let sectionObj = todoList.find((todo) => todo.sectionName === sectionName);
-  // Create a new section if one does not exist
-  if (!sectionObj) {
-    sectionObj = { sectionName, list: [] };
-    todoList.push(sectionObj);
-  }
-
-  // Create a new todo and add it to the section
-  const todo = createTodo(todoId, label, sectionName);
-  sectionObj.list.push(todo);
-
-  return todo;
-};
-
 // ---------------- Helper functions -----------------
 
 export const findProject = (projectsList, projectId) => {
+  if (!projectsList || !Array.isArray(projectsList)) {
+    console.error(
+      "Invalid projectsList parameter. Expected and array.",
+      projectsList
+    );
+    return null;
+  }
+
   if (!projectId) {
     console.error(
       "Missing projectId parameter, please enter a valid project id."
@@ -195,10 +124,19 @@ export const findProject = (projectsList, projectId) => {
   return project;
 };
 
-// export const findTodoBySection = (projectsList, projectId, section) => {
-//   const project = findProject(projectsList, projectId);
+export const findSection = (project, sectionName) => {
+  if (!sectionName) {
+    console.error("Invalid or missing sectionName parameter.", sectionName);
+    return null;
+  }
+  const section = project.todoList.find(
+    (section) => section.sectionName === sectionName
+  );
 
-//   const todo = project.todoList.find((todo) => todo.section === section);
+  if (!section) {
+    console.error(`Section '${sectionName}' not found in project: `, project);
+    return null;
+  }
 
-//   return todo;
-// };
+  return section;
+};

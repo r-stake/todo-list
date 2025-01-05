@@ -102,23 +102,11 @@ console.log(
   "Return the label of todo found in project with projectId = 'prj1' and section = 'default'",
   myProjects.todo.getTodoLabel("prj1", "prj1-todo2")
 );
-
-// projects[0].addTodo("Ignore work");
-// projects[0].addTodo("Play video games");
-// projects[0].addTodo("Fellowship of the ring", "Lord of the Rings watch list");
-// projects[0].addTodo("Two Towers", "Lord of the Rings watch list");
-// projects[0].addTodo("Return of the King", "Lord of the Rings watch list");
-// projects[0].addTodo("Buy beer", "Relaxing evening");
-// projects[0].addTodo("Make popcorn", "Relaxing evening");
-// projects[0].addTodo("Watch 'Family Guy'", "Relaxing evening");
-
-// console.log(projects[0].getList());
-
-// console.log(projects[0].getTodosBySection("Lord of the Rings watch list"));
+console.log(
+  "Todo from project 'prj1' and section 'default' is completed: ",
+  myProjects.todo.isCompleted("prj1", "prj1-todo2")
+);
+console.log(myProjects.todo.getTodosBySection("prj1"));
 
 // projects[0].toggleTodoStatus("Relaxing evening", "Buy beer");
 // console.log(projects[0].getTodosBySection("Relaxing evening"));
-
-// projects.push(createProject("Project Dos", "Second project", "2027-06-01", 3));
-
-// console.log(projects);

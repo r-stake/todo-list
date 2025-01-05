@@ -12,10 +12,14 @@ import {
   setProjectDueDate as setProjectDueDateBase,
   getProjectPriority as getProjectPriorityBase,
   setProjectPriority as setProjectPriorityBase,
-  addTodo as addTodoBase,
 } from "./project";
 
-import { getTodoLabel as getTodoLabelBase } from "./todo";
+import {
+  addTodo as addTodoBase,
+  getTodosBySection as getTodosBySectionBase,
+  getTodoLabel as getTodoLabelBase,
+  isCompleted as isCompletedBase,
+} from "./todo";
 
 export const container = () => {
   const projects = [];
@@ -85,8 +89,16 @@ export const container = () => {
     return addTodoBase(projects, projectId, todoId, label, section);
   };
 
+  const getTodosBySection = (projectId, sectionName = "default") => {
+    return getTodosBySectionBase(projects, projectId, sectionName);
+  };
+
   const getTodoLabel = (projectId, todoId, sectionName = "default") => {
     return getTodoLabelBase(projects, projectId, todoId, sectionName);
+  };
+
+  const isCompleted = (projectId, todoId, sectionName = "default") => {
+    return isCompletedBase(projects, projectId, todoId, sectionName);
   };
 
   return {
@@ -105,6 +117,6 @@ export const container = () => {
       getProjectPriority,
       setProjectPriority,
     },
-    todo: { addTodo, getTodoLabel },
+    todo: { addTodo, getTodosBySection, getTodoLabel, isCompleted },
   };
 };
