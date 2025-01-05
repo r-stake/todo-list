@@ -75,11 +75,28 @@ export const isCompleted = (projectsList, projectId, todoId, sectionName) => {
   const todo = findTodo(projectsList, projectId, todoId, sectionName);
 
   if (todo.completed == null) {
-    console.error("isCompleted not found for: ", todo);
+    console.error("'Completed' parameter is missing from todo object: ", todo);
     return null;
   }
 
   return todo.completed;
+};
+
+export const toggleCompleted = (
+  projectsList,
+  projectId,
+  todoId,
+  sectionName
+) => {
+  const todo = findTodo(projectsList, projectId, todoId, sectionName);
+
+  if (todo.completed == null) {
+    console.error("'Completed' parameter is missing from todo object: ", todo);
+    return false;
+  }
+
+  todo.completed = !todo.completed;
+  return true;
 };
 
 // ------------------ Helper functions --------------------

@@ -20,6 +20,7 @@ import {
   getTodoLabel as getTodoLabelBase,
   isCompleted as isCompletedBase,
   setTodoLabel as setTodoLabelBase,
+  toggleCompleted as toggleCompletedBase,
 } from "./todo";
 
 export const container = () => {
@@ -111,6 +112,10 @@ export const container = () => {
     return isCompletedBase(projects, projectId, todoId, sectionName);
   };
 
+  const toggleCompleted = (projectId, todoId, sectionName = "default") => {
+    return toggleCompletedBase(projects, projectId, todoId, sectionName);
+  };
+
   return {
     project: {
       addProject,
@@ -133,6 +138,7 @@ export const container = () => {
       getTodoLabel,
       setTodoLabel,
       isCompleted,
+      toggleCompleted,
     },
   };
 };

@@ -111,10 +111,30 @@ console.log(
   )
 );
 console.log(
+  "The new label for 'prj1' todo 'prj1-todo2' is: ",
+  myProjects.todo.getTodoLabel("prj1", "prj1-todo2")
+);
+console.log(
   "Todo from project 'prj1' and section 'default' is completed: ",
   myProjects.todo.isCompleted("prj1", "prj1-todo2")
 );
-console.log(myProjects.todo.getTodosBySection("prj1"));
+console.log(
+  "Toggle completion for 'prj1' todo 'prj1-todo2'. Operation is successful - ",
+  myProjects.todo.toggleCompleted("prj1", "prj1-todo2")
+);
+console.log(
+  "Todo from project 'prj1' and section 'default' is completed: (after toggle) ",
+  myProjects.todo.isCompleted("prj1", "prj1-todo2")
+);
+console.log(
+  "Toggle completion for 'prj1' todo 'prj1-todo2'. Operation is successful - ",
+  myProjects.todo.toggleCompleted("prj1", "prj1-todo2")
+);
+console.log(
+  "Todo from project 'prj1' and section 'default' is completed: (after toggle #2) ",
+  myProjects.todo.isCompleted("prj1", "prj1-todo2")
+);
 
+console.log(myProjects.todo.getTodosBySection("prj1"));
 // projects[0].toggleTodoStatus("Relaxing evening", "Buy beer");
 // console.log(projects[0].getTodosBySection("Relaxing evening"));

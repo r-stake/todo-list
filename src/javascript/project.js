@@ -9,20 +9,6 @@ export const createProject = function (
 
   let dueDate = new Date(date);
 
-  // const toggleTodoStatus = (section, label) => {
-  //   const sectionObj = todoList.find((item) => item.section === section);
-  //   if (!sectionObj) {
-  //     return false;
-  //   }
-
-  //   const todo = sectionObj.list.find((todo) => todo.label === label);
-  //   if (todo) {
-  //     todo.completed = !todo.completed;
-  //     return true;
-  //   }
-  //   return false;
-  // };
-
   return {
     todoList,
     projectId,
@@ -30,8 +16,6 @@ export const createProject = function (
     description,
     dueDate,
     priority,
-    // getTodosBySection,
-    // toggleTodoStatus,
   };
 };
 
