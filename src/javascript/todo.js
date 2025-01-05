@@ -45,11 +45,30 @@ export const getTodoLabel = (projectsList, projectId, todoId, sectionName) => {
   const todo = findTodo(projectsList, projectId, todoId, sectionName);
 
   if (!todo.label) {
-    console.error(`Label not found for ${todo}`);
+    console.error("Label not found for: ", todo);
     return null;
   }
 
   return todo.label;
+};
+
+export const setTodoLabel = (
+  projectsList,
+  projectId,
+  todoId,
+  newLabel,
+  sectionName
+) => {
+  const todo = findTodo(projectsList, projectId, todoId, sectionName);
+
+  if (!Object.hasOwn(todo, "label")) {
+    console.error(
+      "Label property missing from todo object. Make sure data is not corrupted."
+    );
+    return null;
+  }
+
+  return (todo.label = newLabel);
 };
 
 export const isCompleted = (projectsList, projectId, todoId, sectionName) => {

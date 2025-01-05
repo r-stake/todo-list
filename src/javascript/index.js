@@ -103,6 +103,14 @@ console.log(
   myProjects.todo.getTodoLabel("prj1", "prj1-todo2")
 );
 console.log(
+  "Set the label of prj1, prj1-todo2: ",
+  myProjects.todo.setTodoLabel(
+    "prj1",
+    "prj1-todo2",
+    "Purchase brand new 'Return of the king'"
+  )
+);
+console.log(
   "Todo from project 'prj1' and section 'default' is completed: ",
   myProjects.todo.isCompleted("prj1", "prj1-todo2")
 );

@@ -19,6 +19,7 @@ import {
   getTodosBySection as getTodosBySectionBase,
   getTodoLabel as getTodoLabelBase,
   isCompleted as isCompletedBase,
+  setTodoLabel as setTodoLabelBase,
 } from "./todo";
 
 export const container = () => {
@@ -97,6 +98,15 @@ export const container = () => {
     return getTodoLabelBase(projects, projectId, todoId, sectionName);
   };
 
+  const setTodoLabel = (
+    projectId,
+    todoId,
+    newLabel,
+    sectionName = "default"
+  ) => {
+    return setTodoLabelBase(projects, projectId, todoId, newLabel, sectionName);
+  };
+
   const isCompleted = (projectId, todoId, sectionName = "default") => {
     return isCompletedBase(projects, projectId, todoId, sectionName);
   };
@@ -117,6 +127,12 @@ export const container = () => {
       getProjectPriority,
       setProjectPriority,
     },
-    todo: { addTodo, getTodosBySection, getTodoLabel, isCompleted },
+    todo: {
+      addTodo,
+      getTodosBySection,
+      getTodoLabel,
+      setTodoLabel,
+      isCompleted,
+    },
   };
 };
